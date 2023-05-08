@@ -13,6 +13,6 @@ code-2
 2. in a loop increment the int values for each characters for both maps
 3. check if both map elements are same in a loop.
 
-Time Complexity : O(log n)
+Time Complexity : O(n)
 Space Complexity : O(1)
 ```
