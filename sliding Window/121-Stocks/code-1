@@ -1,22 +1,29 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-       int l=0,r=0;
-       int maxim=0;
-       
-       while(r<prices.size())
-       {
-           if(prices[r]>prices[l])
-           {
-               maxim=max(maxim,prices[r]-prices[l]);
-           }
-           else
-           l=r;
+    bool isValid(string s) {
+        stack<int> st;
+        unordered_map<char,char> map = {
+            {'}','{'},
+            {')','('},
+            {']','['}
+        };
+        
+        for(const auto &i:s){
+            if(map.find(i)!=map.end())
+            {
+                if(st.empty())
+                    return false;
 
-            r++;
-       } 
+                if(st.top()!=map[i])
+                    return false;
 
-    
-    return maxim;
-}
+                st.pop();    
+            }
+            else
+            st.push(i);
+            
+        }
+
+        return st.empty();
+    }
 };
