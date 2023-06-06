@@ -13,6 +13,6 @@ code-2
 2. in a loop check if s.find() != s.end()
 3. if not found insert()
 
-Time Complexity : O(log n)
+Time Complexity : O(n)
 Space Complexity : O(1)
 ```
