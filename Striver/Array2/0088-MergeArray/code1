@@ -1,0 +1,39 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        int i=m-1,j=0;
+        while(i>=0 && j<n)
+        {
+            if(nums1[i]>nums2[j])
+            {
+                swap(nums1[i],nums2[j]);
+
+            }
+            else
+                break;
+
+            i--;
+            j++;
+
+        }
+
+        for(int k=0;k<m+n;k++)
+        cout<<nums1[k]<<" ";
+        cout<<endl;
+
+        for(i=m;i<m+n;i++)
+        {
+            nums1[i]=nums2[i-m];
+        }
+
+        for(int k=0;k<m+n;k++)
+        cout<<nums1[k]<<" ";
+        cout<<endl;
+
+        sort(nums1.begin(),nums1.end());
+
+        
+
+    }
+};
