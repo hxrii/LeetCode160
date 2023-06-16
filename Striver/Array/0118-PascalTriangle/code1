@@ -1,68 +1,29 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& matrix) {
-        int r0=1;
-        int c=matrix[0].size();
-        int r=matrix.size();
 
-        for(int i=0;i<r;i++)
+    vector<int> rowMake(int row)
+    {
+        long long ans =1;
+        vector<int> ansrow ;
+        ansrow.push_back(ans);
+        for(int col=1;col<row;col++)
         {
-            for(int j=0;j<c;j++)
-            {
-                if(matrix[i][j]==0 && j ==0)
-                {
-                    r0=0;
-                    matrix[i][0]=0;
-                    continue;
-                    
-                }
-                if(matrix[i][j]==0)
-                {
-                    matrix[i][0]=0;
-                    matrix[0][j]=0;
-                }
-
-            }
+            ans=ans*(row-col);
+            ans=ans/col;
+            ansrow.push_back(ans);
         }
-
-        for(int i=r-1;i>0;i--)
-        {
-            for(int j=c-1;j>0;j--)
-            {
-                if(matrix[i][0]==0 || matrix[0][j]==0)
-                {
-                    matrix[i][j]=0;
-                }
-
-            }
-        }
-
-        for(int i=r-1;i>0;i--)
-        {
-            if(r0==0)
-            {
-                matrix[i][0]=0;
-            }
-
-        }
-
-        for(int i=c-1;i>0;i--)
-        {
-            if(matrix[0][0]==0 )
-            {
-                matrix[0][i]=0;
-            }
-
-        }
-
-        if(r0==0 || matrix[0][0]==0)
-        {
-            matrix[0][0]=0;
-        }
-
-
-
-
-
+        return ansrow;
     }
+
+    vector<vector<int>> generate(int numRows) {
+        
+        vector<vector<int>> ans;
+        for(int i=1;i<=numRows;i++)
+        {
+            ans.push_back(rowMake(i));
+        }
+        return ans;
+}
+
+
 };
