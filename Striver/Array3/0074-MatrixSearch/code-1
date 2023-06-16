@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int n= matrix.size(),m= matrix[0].size() ;
+        int len=0;
+        int hei=m-1 ;
+        cout<<len<<" "<<hei;
+
+        while(len<n&& hei>=0)
+        {
+            if(matrix[len][hei]==target)
+            {
+                return true;
+            }
+            
+            if(matrix[len][hei]>target)
+            {
+                hei--;
+                
+            }
+            else
+            {
+                len++;
+                
+            }
+            
+        }
+
+        return false;
+
+
+
+
+    }
+};
