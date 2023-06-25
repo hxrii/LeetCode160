@@ -1,0 +1,27 @@
+class Solution {
+
+public:
+    void makeSet(int idx, int n, vector<int> &temp, vector<vector<int>> &ans,vector<int> &nums){
+    ans.push_back(temp);
+    for(int i=idx;i<n;i++)
+    {
+        if(i!=idx && nums[i]==nums[i-1])
+        continue;
+        
+        temp.push_back(nums[i]);
+        makeSet(i+1,n,temp,ans,nums);
+        temp.pop_back();
+    }
+    }
+
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+    
+    int n = nums.size();
+    vector<vector<int>> ans;
+    vector<int>temp;
+    sort(nums.begin(),nums.end());
+    makeSet(0,n,temp,ans,nums);
+    return ans;        
+    }
+};
