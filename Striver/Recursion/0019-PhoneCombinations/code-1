@@ -1,0 +1,32 @@
+class Solution {
+public:
+
+    void findComb(int idx, string digits,string mapping[],vector<string> &ans,string temp ){
+
+        if(idx==digits.size())
+        {
+             ans.push_back(temp);
+             return;
+        }
+        int a = digits[idx]-'0';
+        string st = mapping[a];
+        for(int i=0;i<st.size();i++)
+        {
+            temp.push_back(st[i]);
+            findComb(idx+1,digits,mapping,ans,temp);
+            temp.pop_back();
+        }
+    }
+
+
+    vector<string> letterCombinations(string digits) {
+       string mapping[10]=
+                 {" "," ","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        vector<string>ans;
+        if(digits=="")
+            return ans;
+        string temp;
+        findComb(0,digits,mapping,ans,temp);
+        return ans;
+    }    
+};
