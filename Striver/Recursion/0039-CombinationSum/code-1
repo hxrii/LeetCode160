@@ -1,0 +1,38 @@
+class Solution {
+public:
+
+    void pickComb(int idx,int target, vector<int>& candidates, vector<vector<int>> &ans, vector<int> &temp  ){
+
+        if(idx==candidates.size())
+        return;
+       
+        int sum=0,n=temp.size();
+        for(int i=0;i<n;i++)
+        {
+           sum+=temp[i]; 
+        }
+        
+
+
+        if(sum==target){
+        ans.push_back(temp);
+        return;
+        } 
+
+        if(sum>target)
+        return;
+
+        temp.push_back(candidates[idx]);
+        pickComb(idx,target,candidates,ans,temp);
+        temp.pop_back();
+        pickComb(idx+1,target,candidates,ans,temp);      
+    }
+
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+
+        vector<vector<int>> ans;
+        vector<int> temp;
+        pickComb(0,target,candidates,ans,temp);
+        return ans;       
+    }
+};
